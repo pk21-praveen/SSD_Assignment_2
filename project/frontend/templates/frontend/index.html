@@ -1,0 +1,133 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>E-commerce</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- App Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="{% static 'js/upload.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/dropzone.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static '/dropzone/dropzone.min.css' %}">
+    <script src="{% static '/dropzone/dropzone.min.js' %}"></script>
+
+</head>
+
+<body>
+
+    <form method="post" enctype="multipart/form-data" class="dropzone clsbox" id="MultiFileUpload">
+        <div class="fallback">
+            <input id="file" name="file" type="file" multiple="multiple" />
+            <input type="submit" value="Upload" />
+        </div>
+    </form>
+
+    <script>
+
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken = getCookie('csrftoken');
+        Dropzone.autoDiscover = false;
+        $('#MultiFileUpload').dropzone({
+            url: "/fileupload/",
+            crossDomain: false,
+            paramName: "file",
+            parallelUploads: 5,
+            autoProcessQueue: true,
+            filesizeBase: 1024,
+            maxFilesize: 10000,
+            dictRemoveFileConfirmation: null,
+            init: function () {
+                this.on("uploadprogress", function (file, progress, bytesSent) {
+                    progress = bytesSent / file.size * 100;
+                    console.log(filesizecalculation(bytesSent))
+                });
+                this.on("maxfilesexceeded", function (data) {
+                    var res = eval('(' + data.xhr.responseText + ')');
+                });
+                this.on("addedfile", function (file) {
+                    var removeButton = Dropzone.createElement("<button data-dz-remove " +
+                        "class='del_thumbnail btn btn-default'><span class='glyphicon glyphicon-trash'></span> Sil</button>");
+                    var _this = this;
+                    removeButton.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        _this.removeFile(file);
+                    });
+                    file.previewElement.appendChild(removeButton);
+                });
+                this.on("error", function (file, message) {
+
+                    console.log(message);
+                    this.removeFile(file);
+                });
+                this.on('sending', function (file, xhr, formData) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                });
+            }
+        });
+
+        Dropzone.prototype.filesize = function (size) {
+            filesizecalculation(size)
+        };
+
+        function filesizecalculation(size) {
+            if (size < 1024 * 1024) {
+                return "<strong>" + (Math.round(Math.round(size / 1024) * 10) / 10) + " KB</strong>";
+            } else if (size < 1024 * 1024 * 1024) {
+                return "<strong>" + (Math.round((size / 1024 / 1024) * 10) / 10) + " MB</strong>";
+            } else if (size < 1024 * 1024 * 1024 * 1024) {
+                return "<strong>" + (Math.round((size / 1024 / 1024 / 1024) * 10) / 10) + " GB</strong>";
+            }
+        }
+    </script>
+
+    <div class="container">
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+</body>
+
+</html>
