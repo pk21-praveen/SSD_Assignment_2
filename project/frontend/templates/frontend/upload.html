@@ -2,52 +2,6 @@
 {% load static %}
 {% block content %}
 <h3>Upload Files</h3>
-
-<div class="panel panel-default">
-    <div class="panel-body">
-
-        <!-- Standar Form -->
-        <h5>Select files from your computer</h5>
-        <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
-            <div class="form-inline">
-                <div class="form-group">
-                    <input type="file" name="files[]" id="js-upload-files" multiple>
-                </div>
-                <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
-            </div>
-        </form>
-
-        <!-- Drop Zone -->
-        <h5>Or drag and drop files below</h5>
-        <div class="upload-drop-zone" id="drop-zone">
-            Just drag and drop files here
-        </div>
-
-        <!-- Progress Bar -->
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                style="width: 60%;">
-                <span class="sr-only">60% Complete</span>
-            </div>
-        </div>
-
-        <!-- Upload Finished -->
-        <div class="js-upload-finished">
-            <h4>Processed files</h4>
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-success">
-                    <span class="badge alert-success pull-right">Success</span>
-                    image-01.jpg
-                </a>
-                <a href="#" class="list-group-item list-group-item-success">
-                    <span class="badge alert-success pull-right">Success</span>
-                    image-02.jpg
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="row d-flex justify-content-center mt-100">
     <div class="col-md-8">
         <div class="card">
@@ -65,23 +19,5 @@
         </div>
     </div>
 </div>
-
-<div class="w-25 mx-auto mt-5">
-    <form method="POST" >
-        {% csrf_token %}
-        <div class="form-group">
-            {{form.image.label_tag}}
-            <div class="file-input">
-                <label class=" text-muted text-center" for="id_image">
-                    <i class="fas fa-download"></i><br>                 
-                    choose an image or drag and drop a one here
-                </label>  
-                {{form.image}}
-            </div>
-            
-        </div>
-        <button type="submit">submit</button>
-    </form>
-</div> 
 
 {% endblock content %}
