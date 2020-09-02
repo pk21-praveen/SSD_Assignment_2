@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
+    <script src="https://kit.fontawesome.com/437a6927d3.js" crossorigin="anonymous"></script>
+
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -31,8 +33,29 @@
     <link rel="stylesheet" href="{% static 'js/dropzone/dropzone.min.css' %}">
     <script src="{% static 'js/dropzone/dropzone.min.js' %}"></script>
 </head>
+
 <body>
-    {{user}}
+
+    {% include 'frontend/navbar.html' %}
+
+    <main role="main">
+        <div class="jumbotron">
+            <div class="col-sm-8 mx-auto">
+                <h1>Navbar examples</h1>
+                <p>This example is a quick exercise to illustrate how the navbar and its contents work. Some navbars
+                    extend
+                    the width of the viewport, others are confined within a <code>.container</code>. For positioning of
+                    navbars, checkout the <a href="/docs/4.5/examples/navbar-static/">top</a> and <a
+                        href="/docs/4.5/examples/navbar-fixed/">fixed top</a> examples.</p>
+                <p>At the smallest breakpoint, the collapse plugin is used to hide the links and show a menu button to
+                    toggle the collapsed content.</p>
+                <p>
+                    <a class="btn btn-primary" href="/docs/4.5/components/navbar/" role="button">View navbar docs
+                        &raquo;</a>
+                </p>
+            </div>
+        </div>
+    </main>
     <div class="container">
         {% block content %}
         {% endblock content %}
