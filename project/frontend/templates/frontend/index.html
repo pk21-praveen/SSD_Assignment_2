@@ -1,4 +1,5 @@
 {% load static %}
+{% load socialaccount %}
 
 <!DOCTYPE html>
 
@@ -27,23 +28,15 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
 
-        <link rel="stylesheet" href="{% static 'js/dropzone/dropzone.min.css' %}">
-        <script src="{% static 'js/dropzone/dropzone.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'js/dropzone/dropzone.min.css' %}">
+    <script src="{% static 'js/dropzone/dropzone.min.js' %}"></script>
 </head>
-
 <body>
-    <form class="dropzone" action="{% url 'home' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="fallback">
-            <input name="file" type="file" multiple />
-        </div>
-    </form>
-    
+    {{user}}
     <div class="container">
         {% block content %}
         {% endblock content %}
     </div>
-
 </body>
 
 </html>
