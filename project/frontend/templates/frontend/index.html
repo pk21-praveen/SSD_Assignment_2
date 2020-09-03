@@ -36,29 +36,46 @@
 
 <body>
 
-    {% include 'frontend/navbar.html' %}
+    <div class="container-fluid px-0">
+        <header>
+            <div class="shape"></div>
+            {% include 'frontend/navbar.html' %}
 
-    <main role="main">
-        <div class="jumbotron">
-            <div class="col-sm-8 mx-auto">
-                <h1>Navbar examples</h1>
-                <p>This example is a quick exercise to illustrate how the navbar and its contents work. Some navbars
-                    extend
-                    the width of the viewport, others are confined within a <code>.container</code>. For positioning of
-                    navbars, checkout the <a href="/docs/4.5/examples/navbar-static/">top</a> and <a
-                        href="/docs/4.5/examples/navbar-fixed/">fixed top</a> examples.</p>
-                <p>At the smallest breakpoint, the collapse plugin is used to hide the links and show a menu button to
-                    toggle the collapsed content.</p>
-                <p>
-                    <a class="btn btn-primary" href="/docs/4.5/components/navbar/" role="button">View navbar docs
-                        &raquo;</a>
-                </p>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-6 mt-5 p-0">
+                        <div class="d-flex justify-content-between">
+                            <img src="{% static 'images/drive.png' %}" class="d-none d-lg-block wh-32 mr-3 mt-2">
+                            <div>
+                                <h1 class="text-title">GOOGLE DRIVE</h1>
+                                <p class="text-para ml-2">File sharing platform</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-6 content-right">
+                        {% if request.user.is_authenticated %}
+                        {% block content %}
+
+                        {% endblock content %}
+                        {% else %}
+                        <h1>FILE UPLOADER!</h1>
+                        <div class="d-none d-lg-block text-para2">You can upload anything you want (files, images, videos, music etc.).
+                            You can upload multiple files at the same time, there is no limit on the number of files, no
+                            limit on the size. You use the service to its full potential.
+                        </div>
+                        <div class="text-center mt-3">
+                            <a href='{% provider_login_url "google" %}' class="btn btn-outline-light signin">
+                                <i class="fab fa-google"></i>
+                                <span class="pl-2">Sign In</span>
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
-        </div>
-    </main>
-    <div class="container">
-        {% block content %}
-        {% endblock content %}
+
+        </header>
     </div>
 </body>
 

@@ -1,34 +1,19 @@
 {% load static %}
 {% load socialaccount %}
 
-
-
-<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">GOOGLE DRIVE - FILE UPLOADER</a>
-
-
+<nav class="navbar fixed-top navbar-expand-lg navbar-transparent">
     <ul class="navbar-nav ml-md-auto">
         {% if request.user.is_authenticated %}
         <li class="nav-item dropdown">
             <div class="nav-link dropdown-toggle" id="myAccountDropdownMenu" data-toggle="dropdown" class="text-light"
                 style="cursor: pointer;">
                 <i class="far fa-user-circle fa-lg mr-2"></i>
-                {{user | title }} 
+                {{user | title }}
             </div>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="myAccountDropdownMenu">
                 <a class="dropdown-item" href="accounts/logout">Logout</a>
             </div>
         </li>
-        {% else %}
-        <li class="nav-item dropdown">
-            <a class="btn btn-outline-dark bg-light" style="cursor: pointer;"
-                href='{% provider_login_url "google" %}'>
-                <img src="https://img.icons8.com/color/16/000000/google-logo.png" class="mr-2 mb-1">
-                Sign In
-            </a>
-        </li>
         {% endif %}
-
-
     </ul>
 </nav>

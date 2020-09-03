@@ -1,194 +1,107 @@
 body {
-    background-color: #f2f7fb
+  background: #cecece;
 }
 
-.mt-100 {
-    margin-top: 100px
+header {
+  background: rgb(50, 104, 213);
+  color: #fff;
 }
 
-.card {
-    border-radius: 5px;
-    -webkit-box-shadow: 0 0 5px 0 rgba(43, 43, 43, .1), 0 11px 6px -7px rgba(43, 43, 43, .1);
-    box-shadow: 0 0 5px 0 rgba(43, 43, 43, .1), 0 11px 6px -7px rgba(43, 43, 43, .1);
-    border: none;
-    margin-bottom: 30px;
-    -webkit-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out
+.wh-32 {
+  width: 32%;
+  height: 32%;
 }
 
-.card .card-header {
-    background-color: transparent;
-    border-bottom: none;
-    padding: 20px;
-    position: relative
+.content-right {
+  height: 100vh;
 }
 
-.card .card-header h5:after {
-    content: "";
-    background-color: #d2d2d2;
-    width: 101px;
-    height: 1px;
-    position: absolute;
-    bottom: 6px;
-    left: 20px
+.navbar-transparent {
+  background: transparent;
 }
 
-.card .card-block {
-    padding: 1.25rem
+.shape {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to bottom, #fff, #fff 70%);
+  position: absolute;
+  -webkit-clip-path: ellipse(400px 400px at 15% 3%);
+  z-index: 0;
 }
 
-.dropzone.dz-clickable {
-    cursor: pointer
+
+.text-title {
+  font-size: 5em;
+  color: rgb(50, 104, 213);
 }
 
-.dropzone {
-    min-height: 150px;
-    border: 1px solid rgba(42, 42, 42, 0.05);
-    background: rgba(204, 204, 204, 0.15);
-    padding: 20px;
-    border-radius: 5px;
-    -webkit-box-shadow: inset 0 0 5px 0 rgba(43, 43, 43, 0.1);
-    box-shadow: inset 0 0 5px 0 rgba(43, 43, 43, 0.1)
+.text-para {
+  color: rgb(50, 104, 213);
+  font-size: 1.2em;
 }
 
-.m-t-20 {
-    margin-top: 20px
+.text-para2 {
+  margin-left: 50px;
+  margin-top: 20px;
+  width: 480px;
+  font-size: 1em;
+  text-justify: distribute;
 }
 
-.btn-primary,
-.sweet-alert button.confirm,
-.wizard>.actions a {
-    background-color: #4099ff;
-    border-color: #4099ff;
-    color: #fff;
-    cursor: pointer;
-    -webkit-transition: all ease-in .3s;
-    transition: all ease-in .3s
+.content-right {
+  padding-top: 200px;
 }
 
-.btn {
-    border-radius: 2px;
-    text-transform: capitalize;
-    font-size: 15px;
-    padding: 10px 19px;
-    cursor: pointer
+.content-right h1 {
+  text-align: center;
 }
 
-/* ------------ */
-body {
-    background-color: #f2f7fb
+.content-right p {
+  font-size: 1.5em;
+  text-align: center;
+  font-weight: bold;
 }
 
-.login-block {
-    margin: 30px auto;
-    min-height: 93.6vh
+.btn.signin {
+  border: 2px solid whitesmoke;
+  border-radius: 25%;
 }
 
-.login-block .auth-box {
-    margin: 20px auto 0;
-    max-width: 450px !important
+.btn.signin:hover {
+  color: rgb(50, 104, 213);
 }
 
-.card {
-    border-radius: 5px;
-    -webkit-box-shadow: 0 0 5px 0 rgba(43, 43, 43, .1), 0 11px 6px -7px rgba(43, 43, 43, .1);
-    box-shadow: 0 0 5px 0 rgba(43, 43, 43, .1), 0 11px 6px -7px rgba(43, 43, 43, .1);
-    border: none;
-    margin-bottom: 30px;
-    -webkit-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out;
-    background-color: #fff
-}
 
-.card .card-block {
-    padding: 1.25rem
-}
-
-.f-80 {
-    font-size: 80px
-}
-
-.form-group {
-    margin-bottom: 1.25em
-}
-
-.form-material .form-control {
-    display: inline-block;
-    height: 43px;
+/* On screens that are 992px wide or less, the background color is blue */
+@media screen and (max-width: 992px) {
+  .shape {
     width: 100%;
-    border: none;
-    border-radius: 0;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 9px;
-    background-color: transparent;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    border-bottom: 1px solid #ccc
+    height: 100vh;
+    background: linear-gradient(to bottom, #fff, #fff 70%);
+    position: absolute;
+    -webkit-clip-path: ellipse(350px 350px at 15% 3%);
+    z-index: 0;
+  }
 }
 
-.btn-md {
-    padding: 10px 16px;
-    font-size: 15px;
-    line-height: 23px
-}
+/* On screens that are 600px wide or less, the background color is olive */
+@media screen and (max-width: 600px) {
+  .content-right {
+    padding-top: 280px;
+  }
 
-.btn-primary {
-    background-color: #4099ff;
-    border-color: #4099ff;
-    color: #fff;
-    cursor: pointer;
-    -webkit-transition: all ease-in .3s;
-    transition: all ease-in .3s
-}
-
-.btn {
-    border-radius: 2px;
-    text-transform: capitalize;
-    font-size: 15px;
-    padding: 10px 19px;
-    cursor: pointer
-}
-
-.m-b-20 {
-    margin-bottom: 20px
-}
-
-.btn-md {
-    padding: 10px 16px;
-    font-size: 15px;
-    line-height: 23px
-}
-
-.heading {
-    font-size: 21px
-}
-
-#infoMessage p {
-    color: red !important
-}
-
-.btn-google {
-    color: #545454;
-    background-color: #ffffff;
-    box-shadow: 0 1px 2px 1px #ddd
-}
-
-.or-container {
-    align-items: center;
-    color: #ccc;
-    display: flex;
-    margin: 25px 0
-}
-
-.line-separator {
-    background-color: #ccc;
-    flex-grow: 5;
-    height: 1px
-}
-
-.or-label {
-    flex-grow: 1;
-    margin: 0 15px;
-    text-align: center
+  .text-para2 {
+    margin-bottom: 50px;
+  }
+  
+  
+  .shape {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom, #fff, #fff 70%);
+    position: absolute;
+    -webkit-clip-path: ellipse(300px 300px at 10% 4%);
+    z-index: 0;
+  }
+  
 }

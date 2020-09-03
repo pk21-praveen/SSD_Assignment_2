@@ -13,11 +13,11 @@ def index(request):
         if form.is_valid():  
             handle_uploaded_file(request.FILES['file']) 
             form = FileFieldForm()  
-            return render(request,"frontend/upload.html", {'form':form})
+            return render(request,"frontend/index.html", {'form':form})
         else:
             return render(request,"frontend/error.html")
 
     else:
         form = FileFieldForm()  
-        return render(request,"frontend/upload.html", {'form':form})
+        return render(request,"frontend/index.html", {'form':form})
          
