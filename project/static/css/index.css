@@ -26,7 +26,6 @@ body {
   background: linear-gradient(to bottom, #fff, #fff 70%);
   position: absolute;
   -webkit-clip-path: ellipse(400px 400px at 15% 3%);
-  z-index: 0;
 }
 
 
@@ -41,11 +40,11 @@ body {
 }
 
 .text-para2 {
-  margin-left: 50px;
+  margin-left: 95px;
   margin-top: 20px;
-  width: 480px;
+  width: 475px;
   font-size: 1em;
-  text-justify: distribute;
+  text-align: justify;
 }
 
 .content-right {

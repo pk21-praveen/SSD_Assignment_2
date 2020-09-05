@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 
-    'api.apps.ApiConfig',
     'frontend.apps.FrontendConfig',
     'rest_framework'
 ]
@@ -52,6 +51,17 @@ SITE_ID = 1
 ACCOUNT_LOGOUT_ON_GET =True
 # ACCOUNT_EMAIL_REQUIRED = True
 LOGIN_REDIRECT_URL = "/" 
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'https://www.googleapis.com/auth/drive'
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
