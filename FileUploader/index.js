@@ -11,7 +11,7 @@ app.set("view engine", "ejs");
 
 let username, picture, authed = false;
 
-const SCOPES = [
+const scopes = [
   'https://www.googleapis.com/auth/userinfo.profile',
   'https://www.googleapis.com/auth/drive.file'
 ];
@@ -25,14 +25,14 @@ let Storage = multer.diskStorage({
   },
 });
 
-let upload = multer({storage: Storage}).single("file");
+let upload = multer({ storage: Storage }).single("file");
 
 app.get("/", (req, res) => {
   if (!authed) {
     // Generate an OAuth URL and redirect there
     var url = oAuth2Client.generateAuthUrl({
       access_type: "offline",
-      scope: SCOPES,
+      scope: scopes,
     });
     console.log(url);
     res.render("index", { url: url });
@@ -46,11 +46,13 @@ app.get("/", (req, res) => {
         console.log(err);
       } else {
         console.log(response.data);
+
         username = response.data.name
         picture = response.data.picture
+
         res.render("upload", {
-          username: response.data.name,
-          picture: response.data.picture,
+          username: username,
+          picture: picture,
           success: false
         });
       }
@@ -65,14 +67,18 @@ app.post("/upload", (req, res) => {
       return res.end("Something went wrong");
     } else {
       console.log(req.file.path);
+
       const drive = google.drive({ version: "v3", auth: oAuth2Client });
+
       const fileMetadata = {
         username: req.file.filename,
       };
+
       const media = {
         mimeType: req.file.mimetype,
         body: fs.createReadStream(req.file.path),
       };
+
       drive.files.create(
         {
           resource: fileMetadata,
@@ -85,19 +91,17 @@ app.post("/upload", (req, res) => {
             console.error(err);
           } else {
             fs.unlinkSync(req.file.path)
-            res.render("upload", { username: name, picture: pic, success: true })
+            res.render("upload", {
+              username: username,
+              picture: picture,
+              success: true
+            });
           }
-
         }
       );
     }
   });
 });
-
-app.get('/logout', (req, res) => {
-  authed = false
-  res.redirect('/')
-})
 
 app.get("/auth/callback", function (req, res) {
   const code = req.query.code;
@@ -111,14 +115,17 @@ app.get("/auth/callback", function (req, res) {
         console.log("Successfully authenticated");
         console.log(tokens)
         oAuth2Client.setCredentials(tokens);
-
-
         authed = true;
         res.redirect("/");
       }
     });
   }
 });
+
+app.get('/logout', (req, res) => {
+  authed = false
+  res.redirect('/')
+})
 
 app.listen(3000, () => {
   console.log("Listening on Port 3000");

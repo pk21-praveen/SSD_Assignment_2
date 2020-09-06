@@ -1,13 +1,9 @@
 const { google } = require("googleapis");
 
-const credentials = require("./credentials/credentials.json");
-
-const APP_CLIENT_ID = credentials.web.client_id;
-const APP_CLIENT_SECRET = credentials.web.client_secret;
-const APP_REDIRECT_URL = credentials.web.redirect_uris[0];
+const credentials = require("./credentials.json");
 
 module.exports = new google.auth.OAuth2(
-  APP_CLIENT_ID,
-  APP_CLIENT_SECRET,
-  APP_REDIRECT_URL
+  credentials.web.client_id, // APP_CLIENT_ID
+  credentials.web.client_secret, // APP_CLIENT_SECRET
+  credentials.web.redirect_uris[0] // APP_REDIRECT_URL
 );
