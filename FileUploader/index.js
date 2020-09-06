@@ -3,7 +3,7 @@ const { google } = require("googleapis");
 const fs = require("fs");
 const multer = require("multer");
 
-const oAuth2Client = require('./credentials');
+const oAuth2Client = require('./credentials/oauth2Client');
 
 const app = express();
 app.use(express.static("public"));

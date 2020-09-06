@@ -1,6 +1,6 @@
 const { google } = require("googleapis");
 
-const credentials = require("./credentials.json");
+const credentials = require("./credentials/credentials.json");
 
 const APP_CLIENT_ID = credentials.web.client_id;
 const APP_CLIENT_SECRET = credentials.web.client_secret;
