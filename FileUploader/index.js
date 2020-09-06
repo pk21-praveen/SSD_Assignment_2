@@ -1,45 +1,31 @@
-const fs = require("fs");
 const express = require("express");
-const multer = require("multer");
-const OAuth2Data = require("./credentials.json");
-var name, pic
-
 const { google } = require("googleapis");
+const fs = require("fs");
+const multer = require("multer");
+
+const oAuth2Client = require('./credentials');
 
 const app = express();
-
 app.use(express.static("public"));
-const CLIENT_ID = OAuth2Data.web.client_id;
-const CLIENT_SECRET = OAuth2Data.web.client_secret;
-const REDIRECT_URL = OAuth2Data.web.redirect_uris[0];
+app.set("view engine", "ejs");
 
-const oAuth2Client = new google.auth.OAuth2(
-  CLIENT_ID,
-  CLIENT_SECRET,
-  REDIRECT_URL
-);
-var authed = false;
+let username, picture, authed = false;
 
-// If modifying these scopes, delete token.json.
 const SCOPES = [
   'https://www.googleapis.com/auth/userinfo.profile',
   'https://www.googleapis.com/auth/drive.file'
 ];
 
-app.set("view engine", "ejs");
-
-var Storage = multer.diskStorage({
+let Storage = multer.diskStorage({
   destination: function (req, file, callback) {
-    callback(null, "./images");
+    callback(null, "./drive");
   },
   filename: function (req, file, callback) {
     callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
   },
 });
 
-var upload = multer({
-  storage: Storage,
-}).single("file"); //Field name and max count
+let upload = multer({storage: Storage}).single("file");
 
 app.get("/", (req, res) => {
   if (!authed) {
@@ -60,11 +46,11 @@ app.get("/", (req, res) => {
         console.log(err);
       } else {
         console.log(response.data);
-        name = response.data.name
-        pic = response.data.picture
+        username = response.data.name
+        picture = response.data.picture
         res.render("upload", {
-          name: response.data.name,
-          pic: response.data.picture,
+          username: response.data.name,
+          picture: response.data.picture,
           success: false
         });
       }
@@ -79,9 +65,9 @@ app.post("/upload", (req, res) => {
       return res.end("Something went wrong");
     } else {
       console.log(req.file.path);
-      const drive = google.drive({ version: "v3",auth:oAuth2Client  });
+      const drive = google.drive({ version: "v3", auth: oAuth2Client });
       const fileMetadata = {
-        name: req.file.filename,
+        username: req.file.filename,
       };
       const media = {
         mimeType: req.file.mimetype,
@@ -99,7 +85,7 @@ app.post("/upload", (req, res) => {
             console.error(err);
           } else {
             fs.unlinkSync(req.file.path)
-            res.render("upload",{name:name,pic:pic,success:true})
+            res.render("upload", { username: name, picture: pic, success: true })
           }
 
         }
@@ -108,9 +94,9 @@ app.post("/upload", (req, res) => {
   });
 });
 
-app.get('/logout',(req,res) => {
-    authed = false
-    res.redirect('/')
+app.get('/logout', (req, res) => {
+  authed = false
+  res.redirect('/')
 })
 
 app.get("/auth/callback", function (req, res) {
@@ -135,7 +121,7 @@ app.get("/auth/callback", function (req, res) {
 });
 
 app.listen(3000, () => {
-  console.log("App is listening on Port 8000");
+  console.log("Listening on Port 3000");
 });
 
 
