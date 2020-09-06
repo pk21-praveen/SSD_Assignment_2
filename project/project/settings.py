@@ -55,10 +55,11 @@ LOGIN_REDIRECT_URL = "/"
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': [
+            'profile',
             'https://www.googleapis.com/auth/drive'
         ],
         'AUTH_PARAMS': {
-            'access_type': 'online',
+            'access_type': 'offline',
         }
     }
 }
