@@ -34,8 +34,9 @@ app.get("/", (req, res) => {
       access_type: "offline",
       scope: scopes,
     });
-    console.log(url);
+
     res.render("index", { url: url });
+    
   } else {
     var oauth2 = google.oauth2({
       version: 'v2',
@@ -71,7 +72,7 @@ app.post("/upload", (req, res) => {
       const drive = google.drive({ version: "v3", auth: oAuth2Client });
 
       const fileMetadata = {
-        username: req.file.filename,
+        name: req.file.filename,
       };
 
       const media = {
@@ -91,11 +92,11 @@ app.post("/upload", (req, res) => {
             console.error(err);
           } else {
             fs.unlinkSync(req.file.path)
-            res.render("upload", {
+            res.render("upload", { 
               username: username,
               picture: picture,
               success: true
-            });
+            });            
           }
         }
       );

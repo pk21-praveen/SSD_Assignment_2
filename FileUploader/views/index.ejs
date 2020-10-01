@@ -8,66 +8,58 @@
     <title>File Uploader</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="/styles/index.css">
+    <link rel="stylesheet" type="text/css" href="styles/index.css">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"></script>
-
+    <script src="js/jquery.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/437a6927d3.js" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
 
-    <div class="container-fluid px-0">
-        <div class="header">
-            <div class="shape"></div>
-            <div class="container-fluid">
-                <div class="row">
+    <div class="theme">
 
-                    <div class="col-6 mt-5 p-0">
-                        <div class="d-flex justify-content-between">
-                            <img src="/images/drive.png" class="d-none d-lg-block wh-32 mr-3 mt-2">
-                            <div>
-                                <h1 class="text-title">GOOGLE DRIVE</h1>
-                                <p class="text-para ml-2">File sharing platform</p>
-                            </div>
+        <div class="shape-circle"></div>
+        
+        <div class="container-fluid">
+            <div class="row">
+                
+                <div class="col-6 mt-5 p-0">
+                    <div class="d-flex justify-content-between">
+                        <img src="/images/drive.png" class="d-none d-lg-block wh-32 mr-3 mt-2">
+                        <div>
+                            <h1 class="text-title">GOOGLE DRIVE</h1>
+                            <p class="text-para ml-2">File sharing platform</p>
                         </div>
                     </div>
-
-                    <div class="col-6 content-right">
-                        <h1 class="text-center">FILE UPLOADER!</h1>
-                        <div class="d-none d-lg-block text-justify text-para2">
-                            You can upload anything you want (files, images, videos, music etc.).
-                            There is no limit on the number of files, no limit on the size.
-                            You use the service to its full potential.
-                        </div>
-                        <div class="text-center mt-3">
-                            <a href="<%=url%>" class="btn btn-outline-light signin">
-                                <i class="fab fa-google"></i>
-                                <span class="pl-2">Sign In</span>
-                            </a>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
 
+                <div class="col-6 content-right">
+                    <h1 class="text-center ml-3 mt-4">FILE UPLOADER!</h1>
+                    <div class="d-none d-lg-block text-justify text-para2">
+                        You can upload anything you want (files, images, videos, music etc.).
+                        There is no limit on the number of files, no limit on the size.
+                        You use the service to its full potential.
+                    </div>
+                    <div class="text-center mt-4 ml-3">
+                        <a href="<%=url%>" class="btn btn-outline-light layout signin">
+                            <i class="fab fa-google"></i>
+                            <span class="pl-2">Sign In</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+          
         </div>
+
     </div>
+
 </body>
 
 </html>

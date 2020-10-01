@@ -2,7 +2,7 @@ body {
   background: #cecece;
 }
 
-.header {
+.theme {
   background: rgb(50, 104, 213);
   color: #fff;
 }
@@ -20,12 +20,12 @@ body {
   background: transparent;
 }
 
-.shape {
+.shape-circle {
   width: 100%;
   height: 100vh;
   background: linear-gradient(to bottom, #fff, #fff 70%);
   position: absolute;
-  -webkit-clip-path: ellipse(400px 400px at 15% 3%);
+  clip-path: ellipse(400px 400px at 15% 3%);
 }
 
 
@@ -40,7 +40,7 @@ body {
 }
 
 .text-para2 {
-  margin-left: 95px;
+  margin-left: 75px;
   margin-top: 20px;
   width: 475px;
   font-size: 1em;
@@ -61,46 +61,74 @@ body {
   font-weight: bold;
 }
 
-.btn.signin {
+.btn.layout {
   border: 2px solid whitesmoke;
-  border-radius: 25%;
 }
 
 .btn.signin:hover {
   color: rgb(50, 104, 213);
 }
 
+.username{
+  color:white;
+}
+
+#progressBar {
+  position: relative;
+  width: 100%;
+  height: 25px;
+  border: 2px solid white;
+}
+
+#progressStatus {
+  position: absolute;
+  width: 8%;
+  height: 100%;
+  background-color: white;
+  color: white;
+}
+
 
 /* On screens that are 992px wide or less, the background color is blue */
 @media screen and (max-width: 992px) {
-  .shape {
+  .shape-circle {
     width: 100%;
     height: 100vh;
     background: linear-gradient(to bottom, #fff, #fff 70%);
     position: absolute;
-    -webkit-clip-path: ellipse(350px 350px at 15% 3%);
+    clip-path: ellipse(350px 350px at 15% 3%);
     z-index: 0;
+  }
+
+
+  .username{
+    color:white;
+    font-weight: 600;
   }
 }
 
 /* On screens that are 600px wide or less, the background color is olive */
 @media screen and (max-width: 600px) {
-  .content-right {
-    padding-top: 280px;
+  .text-title {
+    font-size: 4.5em;
+    color: rgb(50, 104, 213);
   }
 
-  .text-para2 {
-    margin-bottom: 50px;
+  .content-right {
+    padding-top: 220px;
   }
-  
-  
-  .shape {
+
+  .shape-circle {
     width: 100%;
     height: 100vh;
     background: linear-gradient(to bottom, #fff, #fff 70%);
     position: absolute;
-    -webkit-clip-path: ellipse(300px 300px at 10% 4%);
+    clip-path: ellipse(300px 300px at 8% 3%);
     z-index: 0;
+  }
+
+  .username{
+    color: rgb(50, 104, 213);
   }
   
 }
