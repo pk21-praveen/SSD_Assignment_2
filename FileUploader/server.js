@@ -81,7 +81,7 @@ app.post("/uploadFile", (req, res) => {
   singleFileUploader(req, res, function (err) {
     if (err) {
       // handle error
-      return res.end("Error: Unable to upload file");
+      return res.end("Error: Unable to upload file: Please create a folder called \"drive\" inside FileUploader folder");
     } else {
       // initialize google drive api
       const drive = google.drive({ version: "v3", auth: clientAuth });
