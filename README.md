@@ -1,73 +1,74 @@
 # SSD_Assignment_2
 
 #### Member 1
-- **Name**  : S. Praveenkumar
-- **IT NO** : IT17137324
+- **Name**: S. Praveenkumar
+- **IT No**: IT17137324
 
 ---
 
 #### Member 2
-- **Name**  : R. Abishaan
-- **IT NO** : IT17053556
+- **Name**: R. Abishaan
+- **IT No**: IT17053556
 
 ## System Requirements 
 
-This is a [Node.js](https://nodejs.org/en/) module available through the
-[npm registry](https://www.npmjs.com/).
+This web application is based on a Node.JS Express Server
 
-Before installing, [download and install Node.js](https://nodejs.org/en/download/).
-Node.js 0.10 or higher is required.
-
-If this is a brand new project, make sure to create a `package.json` first with
-the [`npm init` command](https://docs.npmjs.com/creating-a-package-json-file).
-
-Installation is done using the
-[`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally):
-
-```bash
-$ npm install express
-```
-
-Follow [our installing guide](http://expressjs.com/en/starter/installing.html)
-for more information.
-
-## Features
-
-  * Robust routing
-  * Focus on high performance
-  * Super-high test coverage
-  * HTTP helpers (redirection, caching, etc)
-  * View system supporting 14+ template engines
-  * Content negotiation
-  * Executable for generating applications quickly
-
+Before setting up the project, please make sure you have node development environment setup installed on your machine. (Node.js 0.10 or higher is required)
 
 ## Quick Start
 
-  The quickest way to get started with express is to utilize the executable [`express(1)`](https://github.com/expressjs/generator) to generate an application as shown below:
+The application runs on port localhost:5000
 
-  Install the executable. The executable's major version will match Express's:
-
-```bash
-$ npm install -g express-generator@4
-```
-
-  Create the app:
+Step 1 - Clone the project using git
 
 ```bash
-$ express /tmp/foo && cd /tmp/foo
+$ git clone https://github.com/pk21-praveen/SSD_Assignment_2.git
 ```
 
-  Install dependencies:
+Step 2 - Go to FileUploader project and open it using any code editor (Visual Studio Code | Atom)
+
+
+Step 3 - Open a new terminal type the following command. (which will install the dependencies)
 
 ```bash
-$ npm install
+$ npm intall
 ```
 
-  Start the server:
+Step 4- Start the server:
 
 ```bash
 $ npm start
 ```
 
-  View the website at: http://localhost:3000
+
+Step 5 - Open a browser and  View the website at http://localhost:3000
+
+Step 7 - Click the button "Sign in with Google" and authorize an account.
+
+Step 8 - Select an account and proceed.
+
+Step 9 - Upload a Photo and click "Upload your album".
+
+Step 10 - Go to your selected Goole drive account and see if the uploaded file is available.
+
+  Clone the repository:
+
+
+
+
+  Go to FileUploader and :
+
+```bash
+$ express /tmp/foo && cd /tmp/foo
+```
+
+  Install :
+
+```bash
+$ npm install
+```
+
+
+
+ : 
