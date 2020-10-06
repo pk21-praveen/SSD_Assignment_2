@@ -18,16 +18,19 @@ Before setting up the project, please make sure you have node development enviro
 
 ## Quick Start
 
-**Step 1** - Clone the project using git
+**Step 1** - Open a new terminal and clone the project using git
 
 ```bash
 $ git clone https://github.com/pk21-praveen/SSD_Assignment_2.git
 ```
 
-**Step 2** - Go to FileUploader project and open it using any code editor (Visual Studio Code | Atom)
+**Step 2** - Go to FileUploader folder
 
+```bash
+$ cd SSD_Assignment_2/FileUploader/
+```
 
-**Step 3** - Open a new terminal type the following command. (which will install the dependencies)
+**Step 3** - Type the following command to install project dependencies
 
 ```bash
 $ npm intall
