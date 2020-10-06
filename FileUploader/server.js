@@ -33,7 +33,7 @@ let Storage = multer.diskStorage({
   },
   filename: function (req, file, callback) {
     // setting a file name
-    callback(null, file.originalname + "-" + Date.now());
+    callback(null, Date.now() + "-" + file.originalname);
   },
 });
 
