@@ -53,7 +53,7 @@
 
                 <div class="col-6 mt-5 p-0">
                     <div class="d-flex justify-content-between">
-                        <img src="/images/drive.png" class="d-none d-lg-block wh-32 mr-3 mt-2">
+                        <img src="/images/drive.png" class="d-none d-lg-block wh-32 mr-3 mt-2" alt="drive">
                         <div>
                             <h1 class="text-title">GOOGLE DRIVE</h1>
                             <p class="text-para ml-2">File sharing platform</p>
@@ -68,18 +68,18 @@
                         <div class="col-md-8">
                                 
                             <h1 class="text-center ml-3">UPLOAD FILE HERE!!!</h1>
-                            <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
+                            <form id="uploadForm" action="/uploadFile" method="POST" enctype="multipart/form-data">
 
                             <div class="form-group mt-3">
                                 <input type="file" class="form-control p-1" name="file" required />
                             </div>
 
 
-                            <% if (success) { %>
+                            <% if (isUploaded) { %>
                                 <script>
-                                    var test = '<%- JSON.stringify(success) %>';
+                                    var uploaded = '<%- JSON.stringify(isUploaded) %>';
                                     var width = 10;
-                                    if (test) {
+                                    if (uploaded) {
                                         var id = setInterval(progress, 10);
                                         function progress() {
                                             if (width >= 100) {
