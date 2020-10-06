@@ -44,4 +44,5 @@ $ npm start
 
 **Step 5** - Open a browser and  View the website at http://localhost:3000
 
+![alt text](https://github.com/pk21-praveen/SSD_Assignment_2/blob/master/FileUploader/drive/LandingPage.png?raw=true)
 
